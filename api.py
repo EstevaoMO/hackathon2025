@@ -13,17 +13,14 @@ def home():
 def relatorio_comercial(
     estado: str = Query(..., alias="localizacao.estado"),
     municipio: str = Query(..., alias="localizacao.municipio"),
-
-):
-    
-    """
-        numero_unidades_salas: str = Query(...),
+    numero_unidades_salas: str = Query(...),
     tamanho_medio_por_unidade_m2: str = Query(...),
     uso_principal: str = Query(...),
     faixa_preco_min: str = Query(..., alias="faixa_preco_estimado.min"),
     faixa_preco_max: str = Query(..., alias="faixa_preco_estimado.max"),
     presenca_estacionamento: str = Query(...),
-    infraestrutura: Optional[List[str]] = Query(None)"""
+    infraestrutura: Optional[List[str]] = Query(None)
+):
     
     cod_estado = buscar_codigo_estado_por_nome(estado)
     cod_municipio = buscar_codigo_municipio_por_nome(municipio, estado)
