@@ -34,7 +34,7 @@ def relatorio_comercial(
     cod_estado = buscar_codigo_estado_por_nome(estado)
     cod_municipio = buscar_codigo_municipio_por_nome(municipio, estado)
     dados = obter_dados_ibge(cod_estado, cod_municipio)
-    return generate(dados, instrucao_geral=f"Gerar relatório comercial com as seguintes especificações: numero_unidades_salas:{numero_unidades_salas} tamanho_medio_por_unidade_m2: {tamanho_medio_por_unidade_m2} uso_principal:{uso_principal} faixa_preco_min:{faixa_preco_min} faixa_preco_max:{faixa_preco_max} presenca_estacionamento:{presenca_estacionamento} infraestrutura:{infraestrutura}")
+    return generate(dados, instrucao_geral=f"Ao gerar relatório comercial, leve em conta as seguintes especificações: numero_unidades_salas:{numero_unidades_salas} tamanho_medio_por_unidade_m2: {tamanho_medio_por_unidade_m2} uso_principal:{uso_principal} faixa_preco_min:{faixa_preco_min} faixa_preco_max:{faixa_preco_max} presenca_estacionamento:{presenca_estacionamento} infraestrutura:{infraestrutura}")
 
 @app.get("/relatorio/residencial")
 def relatorio_residencial(
@@ -51,4 +51,4 @@ def relatorio_residencial(
     cod_estado = buscar_codigo_estado_por_nome(estado)
     cod_municipio = buscar_codigo_municipio_por_nome(municipio, estado)
     dados = obter_dados_ibge(municipio_id=cod_municipio, estado_id=cod_estado)
-    return generate(dados, instrucao_geral=f"Gerar relatório para empreendimento residencial com as seguintes especificações: numero_unidades:{numero_unidades} tamanho_medio_por_unidade_m2:{tamanho_medio_por_unidade_m2} numero_dormitorios:{numero_dormitorios} faixa_preco_min:{faixa_preco_min} faixa_preco_max:{faixa_preco_max} presenca_area_comum:{presenca_area_comum} itens_area_comum:{itens_area_comum}")
+    return generate(dados, instrucao_geral=f"Ao gerar relatório residencial, leve em conta as seguintes especificações: numero_unidades:{numero_unidades} tamanho_medio_por_unidade_m2:{tamanho_medio_por_unidade_m2} numero_dormitorios:{numero_dormitorios} faixa_preco_min:{faixa_preco_min} faixa_preco_max:{faixa_preco_max} presenca_area_comum:{presenca_area_comum} itens_area_comum:{itens_area_comum}")

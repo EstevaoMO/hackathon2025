@@ -68,6 +68,8 @@ Você recebeu os seguintes dados para analisar a viabilidade de longo prazo de u
 - Índice de envelhecimento: {dados["indice_envelhecimento"]}
 - Rendimento mensal médio: {dados["rendimento_mensal_medio"]}
 - Densidade demográfica: {dados["densidade_demografica"]}
+
+{instrucao_geral}
 """
 ),
             ],
@@ -202,7 +204,7 @@ Você deve **gerar uma resposta estruturada** no seguinte formato JSON:
 Caso haja dados que não puderam ser preenchidos, deixe o campo vazio ou com o valor `none`.
 
 Sempre busque transformar os dados em insights estratégicos acionáveis, e não apenas repetir números ou tabelas. Pense como alguém que precisa dar segurança a uma diretoria de incorporação ao decidir investir milhões de reais em um novo projeto.
-                         """ + instrucao_geral)
+                         """)
 ]
     )
     resposta_str = "" # Alterado o nome para deixar claro que é uma string
