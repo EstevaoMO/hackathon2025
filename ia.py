@@ -1,5 +1,5 @@
 # pip install google-genai python-dotenv requests
-
+import json
 import requests
 import os
 from google import genai
@@ -205,17 +205,25 @@ Sempre busque transformar os dados em insights estratégicos acionáveis, e não
                          """ + instrucao_geral)
 ]
     )
-    resposta = ""
-
+    resposta_str = "" # Alterado o nome para deixar claro que é uma string
     for chunk in client.models.generate_content_stream(
-            model=model,
-            contents=contents,
-            config=generate_content_config,
-        ):
+        model=model,
+        contents=contents,
+        config=generate_content_config,
+    ):
         if hasattr(chunk, "text"):
-            resposta += chunk.text  # Acumula o texto
+            resposta_str += chunk.text  # Acumula o texto (string JSON)
 
-    return resposta
+    try:
+        # Tenta desserializar a string JSON para um dicionário Python
+        resposta_dict = json.loads(resposta_str)
+        return resposta_dict # Retorna o dicionário Python
+    except json.JSONDecodeError as e:
+        # Lida com o caso onde a string não é um JSON válido
+        print(f"Erro ao decodificar JSON da resposta da IA: {e}")
+        print(f"Resposta bruta da IA: {resposta_str}")
+        # Você pode retornar um dicionário de erro ou levantar uma exceção
+        return {"error": "Falha ao processar a resposta da IA", "details": str(e)}
 
 
 def buscar_codigo_estado_por_nome(nome_estado):

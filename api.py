@@ -1,9 +1,18 @@
 from fastapi import FastAPI, Query
 from typing import List, Optional
+from fastapi.middleware.cors import CORSMiddleware
 
 from ia import obter_dados_ibge, generate, buscar_codigo_estado_por_nome, buscar_codigo_municipio_por_nome
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Para desenvolvimento, permite qualquer origem
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
